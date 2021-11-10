@@ -38,7 +38,8 @@ export const filterProducts = (searchKey, sortKey, category) => dispatch => {
         if (sortKey !== 'popular') {
             if (sortKey == 'htl') {
                 filteredProducts = res.data.sort((a, b) => {
-                    return -a.price + b.price
+                    console.log('Hello');
+                    return -a.price + b.price;
                 })
             }
             else {
@@ -81,7 +82,6 @@ export const addProductReview = (review, productid) => (dispatch, getState) => {
 
 
 export const deleteProduct = (productid) => dispatch => {
-
 
     dispatch({ type: 'DELETE_PRODUCT_REQUEST' })
 

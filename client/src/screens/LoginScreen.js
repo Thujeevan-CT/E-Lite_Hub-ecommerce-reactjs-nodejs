@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from "../actions/userActions";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import { Link } from 'react-router-dom';
 
 export default function LoginScreen() {
 
@@ -28,7 +29,7 @@ export default function LoginScreen() {
     }, [])
 
     return (
-        <div>
+        <div className="loginScreen">
             <div className="row justify-content-center m-3">
                 <div className="col-md-4 card p-3 shadow p-3 mb-5 bg-white rounded" style={{ marginTop: "100px" }}>
                     <div className="div">
@@ -38,11 +39,11 @@ export default function LoginScreen() {
                         {error && (<Error error='Invalid Credentials' />)}
                         {loading && (<Loader />)}
 
-                        <form onSubmit={login}>
+                        <form onSubmit={login} style={{ marginTop: '1.5rem' }}>
 
                             <input
                                 type="text"
-                                placeholder="email"
+                                placeholder="Email"
                                 className="form-control inm"
                                 value={email}
                                 required
@@ -53,7 +54,7 @@ export default function LoginScreen() {
 
                             <input
                                 type="password"
-                                placeholder="password"
+                                placeholder="Password"
                                 className="form-control"
                                 value={password}
                                 required
@@ -71,7 +72,7 @@ export default function LoginScreen() {
 
                     </div>
 
-                    <a style={{ color: 'black' }} href="/register" className='mt-3'>Click Here To Register</a>
+                    <Link to="/register" className='logReg mt-3'>Register Page</Link>
                 </div>
             </div>
         </div>

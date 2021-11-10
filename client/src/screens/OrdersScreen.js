@@ -20,6 +20,8 @@ export default function OrdersScreen() {
         }
     }, [dispatch]);
 
+    console.log(orders)
+
     return (
         <div>
             <div className="row justify-content-center mt-5">

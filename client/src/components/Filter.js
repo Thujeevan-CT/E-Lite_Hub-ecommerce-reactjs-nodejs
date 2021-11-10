@@ -9,8 +9,8 @@ export default function Filter() {
     const dispatch = useDispatch();
 
     return (
-        <div>
-            <div className="row justify-content-center shadow p-3 mb-5 bg-white rounded">
+        <div className='filtering'>
+            <div className="row justify-content-center shadow p-3 mb-5 bg-white rounded ">
                 <div className="col-md-3 ml-2" style={{ marginTop: '1.5rem' }}>
                     <input
                         value={searchkey}
@@ -18,7 +18,7 @@ export default function Filter() {
                             setsearchkey(e.target.value);
                         }}
                         type="text"
-                        placeholder="search products"
+                        placeholder="Search Products"
                         className="form-control"
                     />
                 </div>
@@ -32,8 +32,8 @@ export default function Filter() {
                         }}
                     >
                         <option value="popular">Popular</option>
-                        <option value="htl">high to Low</option>
                         <option value="lth">Low To High</option>
+                        <option value="htl">high to Low</option>
                     </select>
                 </div>
 
@@ -48,6 +48,7 @@ export default function Filter() {
                         <option value="all">All</option>
                         <option value="electronics">Electronics</option>
                         <option value="mobiles">Mobiles</option>
+                        <option value="laptops">Laptops</option>
                     </select>
                 </div>
 

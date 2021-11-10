@@ -7,6 +7,7 @@ import { getAllProducts } from '../actions/productActions';
 import Loader from './../components/Loader';
 import Error from './../components/Error';
 import Filter from './../components/Filter';
+import './products.css'
 
 function Homescreen() {
 
@@ -22,8 +23,12 @@ function Homescreen() {
 
     return (
         <div>
+            <div>
+                <div class="slideshow_1 q1">
+                </div>
+            </div>
             <Filter />
-            <div className="row justify-content-center" style={{ width: "100%" }}>
+            <div className="flex-container" style={{ width: "100%" }}>
 
                 {loading ? <Loader /> : error ? <Error error="Something went wrong." />
                     : (

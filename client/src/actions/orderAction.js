@@ -14,7 +14,8 @@ export const placeOrder = (token, subtotal) => (dispatch, getState) => {
     }
     dispatch({ type: 'PLACE_ORDER_REQUEST' })
     axios.post('/api/orders/placeorder', { token, subtotal, currentUser, cartItems }).then(res => {
-        dispatch({ type: 'PLACE_ORDER_SUCCESS' })
+        dispatch({ type: 'PLACE_ORDER_SUCCESS' });
+        localStorage.removeItem('cartItems');
         console.log(res);
     }).catch(err => {
         dispatch({ type: 'PLACE_ORDER_FAILED' })

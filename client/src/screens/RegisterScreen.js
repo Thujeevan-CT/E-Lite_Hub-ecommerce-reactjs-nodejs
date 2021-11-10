@@ -4,6 +4,7 @@ import { registerNewUser } from '../actions/userActions'
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 import Success from "../components/Success";
+import { Link } from 'react-router-dom';
 export default function RegisterScreen() {
 
     const registerState = useSelector(state => state.registerNewUserReducer)
@@ -48,16 +49,15 @@ export default function RegisterScreen() {
             <div className="row justify-content-center m-3">
                 <div className="col-md-5 card p-3 shadow p-3 mb-5 bg-white rounded" style={{ marginTop: "100px" }}>
                     <div className="div">
-                        <h2 style={{ display: "inline" }} className="text-center m-3">Register</h2>
-                        <i style={{ fontSize: '25px' }} className="fa fa-user-plus" aria-hidden="true"></i>
+                        <h2 style={{ display: "inline" }} className="text-center m-3">Register Your Account</h2>
 
                         {error && (<Error error='Email Address is already registered' ></Error>)}
-                        {success && (<Success success='Your Registration is successful' />)}
+                        {success && (<Success success='Your Registration is successful. you can login now.' />)}
 
-                        <form onSubmit={register}>
+                        <form onSubmit={register} style={{ marginTop: '1.5rem' }}>
                             <input
                                 type="text"
-                                placeholder="name"
+                                placeholder="Name"
                                 className="form-control inm"
                                 required
                                 value={username}
@@ -79,7 +79,7 @@ export default function RegisterScreen() {
                             />
                             <input
                                 type="text"
-                                placeholder="email"
+                                placeholder="Email"
                                 className="form-control inm"
                                 value={email}
                                 required
@@ -90,7 +90,7 @@ export default function RegisterScreen() {
 
                             <input
                                 type="password"
-                                placeholder="password"
+                                placeholder="Password"
                                 className="form-control inm"
                                 value={password}
                                 required
@@ -101,7 +101,7 @@ export default function RegisterScreen() {
 
                             <input
                                 type="password"
-                                placeholder="confirm password"
+                                placeholder="Confirm Password"
                                 className="form-control"
                                 value={confirmPassword}
                                 required
@@ -119,7 +119,7 @@ export default function RegisterScreen() {
 
 
                     </div>
-                    <a style={{ color: 'black' }} href="/login" className='m-3'>Click Here To Login</a>
+                    <Link to="/login" className='logReg mt-3'>Login Page</Link>
                 </div>
             </div>
         </div>

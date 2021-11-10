@@ -63,7 +63,7 @@ export const updateReducer = (state = {}, action) => {
         case 'USER_UPDATE_FAILED': return {
             ...state,
             loading: false,
-            error: 'User Already Registred'
+            error: 'User Already Registered'
         }
 
         default: return state

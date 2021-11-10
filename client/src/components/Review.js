@@ -63,12 +63,11 @@ export default function Review({ product }) {
             <h2 className='mt-3'>Latest Reviews</h2>
 
             {reviews.length !== 0 ? reviews.map(review => {
-                return <div className="text-left">
+                return <div className="text-left comment">
                     <p>{review.comment}</p>
                     <p>By : <b>{review.name}</b></p>
-                    <hr />
                 </div>
-            }) : <p>No Reviews in this product</p>}
+            }) : <p className='text-center'>No Reviews in this product</p>}
         </div>
     )
 }

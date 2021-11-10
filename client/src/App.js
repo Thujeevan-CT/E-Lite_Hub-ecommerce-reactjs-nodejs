@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import './App.css';
 import Navbar from './components/Navbar';
 import Homescreen from './screens/Homescreen';
@@ -8,11 +9,23 @@ import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
 import OrdersScreen from './screens/OrdersScreen';
 import Orderinfo from './screens/Orderinfo';
+import Profilescreen from './screens/Profilescreen';
+import Adminscreen from './screens/Adminscreen';
 
 function App() {
 
-  let userLoggedIn;
+  const userState = useSelector(state => state.loginReducer)
 
+  let isAdminLoggedIn;
+  if (userState.currentUser === null) {
+    isAdminLoggedIn = false
+  } else {
+    if (userState.currentUser.isAdmin === 'true') {
+      isAdminLoggedIn = true
+    }
+  }
+
+  let userLoggedIn;
   if (localStorage.getItem('currentUser')) {
     userLoggedIn = true
   } else {
@@ -26,11 +39,13 @@ function App() {
         <Switch>
           <Route path="/" exact component={Homescreen} />
           <Route path="/product/:id" component={Productscreen} />
+          {isAdminLoggedIn && <Route path="/admin" component={Adminscreen} />}
           {userLoggedIn ? <Route path="/cart" component={Cartscreen} /> : <Route path="/cart" component={LoginScreen} />}
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={RegisterScreen} />
-          <Route path="/orders" component={OrdersScreen} />
-          <Route path="/orderinfo/:orderid" component={Orderinfo} />
+          {userLoggedIn ? <Route path="/orders" component={OrdersScreen} /> : <Route path="/cart" component={LoginScreen} />}
+          {userLoggedIn ? <Route path="/orderinfo/:orderid" component={Orderinfo} /> : <Route path="/cart" component={LoginScreen} />}
+          {userLoggedIn ? <Route path="/profile" component={Profilescreen} /> : <Route path="/cart" component={LoginScreen} />}
           <Route path="*" component={Homescreen} />
         </Switch>
       </BrowserRouter>

@@ -47,11 +47,10 @@ export const updateUser = (userid, updateduser) => dispatch => {
     dispatch({ type: 'USER_UPDATE_REQUEST' })
 
     axios
-        .post("/api/users/update", { userid: userid, updateduser: updateduser })
+        .post("/api/user/update", { userid: userid, updateduser: updateduser })
         .then(res => {
             dispatch({ type: 'USER_UPDATE_SUCCESS' })
             console.log(res);
-            window.location.reload();
         })
         .catch(err => {
             dispatch({ type: 'USER_UPDATE_FAILED', payload: err })
@@ -63,7 +62,7 @@ export const getAllUsers = () => dispatch => {
 
     dispatch({ type: 'GET_ALLUSERS_REQUEST' })
 
-    axios.get('/api/users/getallusers').then(res => {
+    axios.get('/api/user/getallusers').then(res => {
         dispatch({ type: 'GET_ALLUSERS_SUCCESS', payload: res.data })
     }).catch(err => {
         dispatch({ type: 'GET_ALLUSERS_FAILED', payload: err })
@@ -74,7 +73,7 @@ export const deleteUser = (userid) => dispatch => {
 
     dispatch({ type: 'DELETE_USER_REQUEST' })
 
-    axios.post('/api/users/deleteuser', { userid }).then(res => {
+    axios.post('/api/user/deleteuser', { userid }).then(res => {
 
         dispatch({ type: 'DELETE_USER_SUCCESS', payload: res.data })
         alert('User deleted successfully')

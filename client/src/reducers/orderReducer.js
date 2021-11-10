@@ -17,6 +17,7 @@ export const placeOrderReducer = (state = {}, action) => {
         default: return { state }
     }
 }
+
 export const getOrdersByUserIdReducer = (state = {}, action) => {
     switch (action.type) {
         case 'GET_ORDERSBYUSERID_REQUEST': return {
@@ -36,7 +37,6 @@ export const getOrdersByUserIdReducer = (state = {}, action) => {
         default: return { state }
     }
 }
-
 
 export const getOrderByIdReducer = (state = {}, action) => {
     switch (action.type) {
@@ -58,8 +58,6 @@ export const getOrderByIdReducer = (state = {}, action) => {
     }
 }
 
-
-
 export const getAllOrdersReducer = (state = { orders: [] }, action) => {
     switch (action.type) {
         case 'GET_ALLORDERS_REQUEST': return {
@@ -78,5 +76,4 @@ export const getAllOrdersReducer = (state = { orders: [] }, action) => {
         }
         default: return { state }
     }
-
 }

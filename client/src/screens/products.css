@@ -1,0 +1,30 @@
+.flex-container {
+  max-width: 1220px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.flex-container .card-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f0f0f0;
+  width: 350px;
+  margin-bottom: 3rem;
+  border-radius: 2rem;
+  box-shadow: 6px 5px 16px -1px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 6px 5px 16px -1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 6px 5px 16px -1px rgba(0, 0, 0, 0.15);
+}
+
+.desMenu {
+  padding: 1rem;
+  text-align: center !important;
+}
+
+.desMenu span {
+  color: rgb(70, 70, 70);
+  text-align: left !important;
+}

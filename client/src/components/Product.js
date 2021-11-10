@@ -6,15 +6,18 @@ import 'react-rater/lib/react-rater.css';
 function Product({ product }) {
     const { productid, image, name, rating, price } = product;
     return (
-        <div className="col-md-3 m-3 card p-2 text-left" key={productid} >
+        <div className="card-product" key={productid} >
             <div>
                 <Link to={`product/${productid}`}>
                     <div className="text-center">
                         <img src={image} className="img-fluid" />
                     </div>
-                    <h1 className="psName">{name}</h1>
-                    <Rater rating={rating} total={5} interactive={false} />
-                    <h1 className="psPrice">Price: {price}</h1>
+                    <div className="desMenu">
+                        <h4 className="psName">{name}</h4>
+                        <span>Price: </span>
+                        <h4 className="psPrice">Rs. {price}.00</h4>
+                        <span>Rating: <Rater rating={rating} total={5} interactive={false} /></span>
+                    </div>
                 </Link>
             </div>
         </div>
