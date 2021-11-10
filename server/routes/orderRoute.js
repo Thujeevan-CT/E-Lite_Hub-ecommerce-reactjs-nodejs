@@ -90,4 +90,9 @@ router.post('/getorderbyid', async (req, res) => {
 
 })
 
+router.get('/getallorders', async (req, res) => {
+    const getAllOrders = await orders.findAll();
+    res.send(getAllOrders);
+})
+
 module.exports = router

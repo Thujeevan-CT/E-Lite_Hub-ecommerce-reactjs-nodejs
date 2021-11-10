@@ -15,7 +15,8 @@ router.post('/register', async (req, res) => {
                     username: username,
                     mobile: mobile,
                     email: email,
-                    password: hash
+                    password: hash,
+                    isAdmin: 'false'
                 });
                 res.send("Register Successfully");
             })
@@ -40,7 +41,8 @@ router.post('/login', async (req, res) => {
                         const currentUser = {
                             username: user.username,
                             userid: user.userid,
-                            email: user.email
+                            email: user.email,
+                            isAdmin: user.isAdmin
                         }
                         res.send(currentUser)
                     }
@@ -57,48 +59,39 @@ router.post('/login', async (req, res) => {
 
 });
 
+router.post('/update', async (req, res) => {
+    const { userid, updateduser } = req.body;
+    const userNewPassword = updateduser.password;
+
+    try {
+        bcrypt.hash(userNewPassword, 10).then((hash) => {
+            users.update({
+                password: hash
+            }, { where: { userid: userid } })
+            res.send("Success");
+        })
+    } catch (error) {
+        return res.status(400).json({ error });
+    }
+})
+
+router.get('/getallusers', async (req, res) => {
+    const getAllUsers = await users.findAll();
+    res.send(getAllUsers);
+})
+
+router.post("/deleteuser", async (req, res) => {
+
+    const { userid } = req.body;
+
+    const deleteUser = await users.destroy({
+        where: { userid: userid }
+    })
+    res.json('Success');
+});
+
+
 
 module.exports = router;
 
 
-// if (user.email !== email) {
-
-//     users.create({
-//         username: username,
-//         mobile: mobile,
-//         email: email,
-//         password: password
-//     });
-//     res.json("SUCCESS");
-
-// } else {
-//     res.json('Email Already registered')
-// }
-
-
-
-
-
-
-
-
-// res.send(user.email && (user.password === password))
-    // const check = bcrypt.compare(password, user.password);
-    // res.send(check)
-
-    // bcrypt.compare(password, user.password).then(function (result) {
-    //     res.send(result)
-    // });
-
-// if (!user) res.json({ error: "User Doesn't Exist" });
-//     bcrypt.compare(password, user.password).then(async (match) => {
-//         if (!match) res.json({ error: "Wrong Username And Password Credentials" });
-
-//         const currentUser = {
-//             username: user.username,
-//             userid: user.userid,
-//             email: user.email
-//         }
-
-//         console.log(currentUser)
-//     })

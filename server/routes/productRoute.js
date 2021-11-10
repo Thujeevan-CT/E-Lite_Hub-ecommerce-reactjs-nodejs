@@ -53,4 +53,46 @@ router.post('/getallreviews', async (req, res) => {
     res.send(review);
 });
 
+router.post('/addproduct', async (req, res) => {
+    const { product } = req.body;
+
+    const productData = await products.create({
+        name: product.name,
+        image: product.image,
+        category: product.category,
+        description: product.description,
+        price: product.price,
+        countInStock: product.countInStock,
+        rating: product.rating
+    })
+    res.json(productData);
+})
+
+router.post('/updateproduct', async (req, res) => {
+    const { productid, updatedproduct } = req.body;
+
+    const productData = await products.update({
+        name: updatedproduct.name,
+        image: updatedproduct.image,
+        category: updatedproduct.category,
+        description: updatedproduct.description,
+        price: updatedproduct.price,
+        countInStock: updatedproduct.countInStock,
+    }, { where: { productid: productid } });
+
+    res.json('Success');
+
+})
+
+router.post("/deleteproduct", async (req, res) => {
+
+    const { productid } = req.body;
+
+    const deleteProduct = await products.destroy({
+        where: { productid: productid }
+    })
+    res.json('Success');
+});
+
+
 module.exports = router;
