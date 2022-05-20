@@ -1,5 +1,7 @@
 ## ReactJS - NodeJS (Express) - MySQL (Sequelize)
 
+Setup and installations
+
 ### Frontend
 
 ```
