@@ -20,7 +20,7 @@ app.use('/api/orders', orderRoute);
 const PORT = process.env.PORT || 7000;
 db.sequelize.sync().then(() => {
     app.listen(PORT, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-        console.log(`Server is running on ${PORT}`);
+        console.log(`Server is running on ${PORT}...`);
     })
 })
 
